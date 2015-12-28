@@ -6,8 +6,15 @@
 */
 
 module.exports = {
+  tableName: 'vehicles',
 
   attributes: {
+    id: {
+      type: 'integer',
+      unique: true,
+      primaryKey: true
+    },
+
     name: {
       type: 'string'
     },
@@ -17,7 +24,8 @@ module.exports = {
     },
 
     owner: {
-      model: 'user'
+      model: 'user',
+      columnName: 'ownerId'
     },
 
     DTCs: {

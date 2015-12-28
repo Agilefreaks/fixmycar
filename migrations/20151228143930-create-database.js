@@ -12,7 +12,7 @@ exports.up = function(db, callback) {
     id: {type: 'int', primaryKey: true},
     name: 'string',
     VIN: 'string',
-    owner: {
+    ownerId: {
       type: 'int',
       foreignKey: {
         name: 'vehicle_user_id_fk',
@@ -24,7 +24,7 @@ exports.up = function(db, callback) {
   var dtcsSchema = {
     id: {type: 'int', primaryKey: true},
     code: 'string',
-    vehicle: {
+    vehicleId: {
       type: 'int',
       foreignKey: {
         name: 'dtc_vehicle_id_fk',

@@ -6,8 +6,15 @@
 */
 
 module.exports = {
+  tableName: 'users',
 
   attributes: {
+    id: {
+      type: 'integer',
+      unique: true,
+      primaryKey: true
+    },
+
     name: {
       type: 'string'
     },

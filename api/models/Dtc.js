@@ -6,14 +6,22 @@
 */
 
 module.exports = {
+  tableName: 'dtcs',
 
   attributes: {
+    id: {
+      type: 'integer',
+      unique: true,
+      primaryKey: true
+    },
+
     code: {
       type: 'string'
     },
 
     vehicle: {
-      model: 'vehicle'
+      model: 'vehicle',
+      columnName: 'vehicleId'
     }
   }
 };

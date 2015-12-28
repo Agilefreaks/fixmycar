@@ -3,18 +3,41 @@ var type = dbm.dataType;
 
 exports.up = function(db, callback) {
   var userSchema = {
-    id: {type: 'int', primaryKey: true},
+    id: {
+      type: 'int',
+      unsigned: true,
+      notNull: true,
+      primaryKey: true,
+      autoIncrement: true
+    },
     createdAt: 'datetime',
     updatedAt: 'datetime',
-    name: 'string',
-    email: 'string',
-    phone: 'string'
+    name: {
+      type: 'string',
+      notNull: true
+    },
+    email: {
+      type: 'string',
+      notNull: true
+    },
+    phone: {
+      type: 'string',
+      notNull: true
+    }
   };
   var vehicleSchema = {
-    VIN: {type: 'string', primaryKey: true},
+    VIN: {
+      type: 'string',
+      primaryKey: true,
+      notNull: true,
+      unique: true
+    },
     createdAt: 'datetime',
     updatedAt: 'datetime',
-    name: 'string',
+    name: {
+      type: 'string',
+      notNull: true
+    },
     ownerId: {
       type: 'int',
       foreignKey: {
@@ -25,12 +48,22 @@ exports.up = function(db, callback) {
     }
   };
   var dtcsSchema = {
-    id: {type: 'int', primaryKey: true},
+    id: {
+      type: 'int',
+      unsigned: true,
+      notNull: true,
+      primaryKey: true,
+      autoIncrement: true
+    },
     createdAt: 'datetime',
     updatedAt: 'datetime',
-    code: 'string',
+    code: {
+      type: 'string',
+      notNull: true
+    },
     vehicleVIN: {
       type: 'string',
+      notNull: true,
       foreignKey: {
         name: 'dtc_vehicle_vin_fk',
         table: 'vehicles',

@@ -7,6 +7,8 @@
 
 module.exports = {
   tableName: 'dtcs',
+  autoCreatedAt: true,
+  autoUpdatedAt: true,
 
   attributes: {
     id: {
@@ -21,7 +23,7 @@ module.exports = {
 
     vehicle: {
       model: 'vehicle',
-      columnName: 'vehicleId'
+      columnName: 'vehicleVIN'
     }
   }
 };

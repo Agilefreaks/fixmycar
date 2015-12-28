@@ -7,6 +7,8 @@
 
 module.exports = {
   tableName: 'users',
+  autoCreatedAt: true,
+  autoUpdatedAt: true,
 
   attributes: {
     id: {

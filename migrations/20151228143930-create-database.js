@@ -4,14 +4,17 @@ var type = dbm.dataType;
 exports.up = function(db, callback) {
   var userSchema = {
     id: {type: 'int', primaryKey: true},
+    createdAt: 'datetime',
+    updatedAt: 'datetime',
     name: 'string',
     email: 'string',
     phone: 'string'
   };
   var vehicleSchema = {
-    id: {type: 'int', primaryKey: true},
+    VIN: {type: 'string', primaryKey: true},
+    createdAt: 'datetime',
+    updatedAt: 'datetime',
     name: 'string',
-    VIN: 'string',
     ownerId: {
       type: 'int',
       foreignKey: {
@@ -23,13 +26,15 @@ exports.up = function(db, callback) {
   };
   var dtcsSchema = {
     id: {type: 'int', primaryKey: true},
+    createdAt: 'datetime',
+    updatedAt: 'datetime',
     code: 'string',
-    vehicleId: {
-      type: 'int',
+    vehicleVIN: {
+      type: 'string',
       foreignKey: {
-        name: 'dtc_vehicle_id_fk',
+        name: 'dtc_vehicle_vin_fk',
         table: 'vehicles',
-        mapping: 'id'
+        mapping: 'VIN'
       }
     }
   };

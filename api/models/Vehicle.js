@@ -7,19 +7,17 @@
 
 module.exports = {
   tableName: 'vehicles',
+  autoCreatedAt: true,
+  autoUpdatedAt: true,
 
   attributes: {
-    id: {
-      type: 'integer',
+    VIN: {
+      type: 'string',
       unique: true,
       primaryKey: true
     },
 
     name: {
-      type: 'string'
-    },
-
-    VIN: {
       type: 'string'
     },
 

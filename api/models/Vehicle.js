@@ -9,6 +9,7 @@ module.exports = {
   tableName: 'vehicles',
   autoCreatedAt: true,
   autoUpdatedAt: true,
+  autoPK: false,
 
   attributes: {
     VIN: {

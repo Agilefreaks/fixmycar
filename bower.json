@@ -1,0 +1,18 @@
+{
+  "name": "FixMyCar",
+  "version": "0.0.0",
+  "authors": [
+    "pirvudoru <pirvu.doru@ymail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "almond": "~0.3.1"
+  }
+}

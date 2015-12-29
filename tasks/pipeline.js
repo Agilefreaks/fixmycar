@@ -27,12 +27,17 @@ var jsFilesToInject = [
   // Load sails.io before everything else
   'js/dependencies/sails.io.js',
 
-  // Dependencies like jQuery, or Angular are brought in here
+  // Avoid loading all bower scripts and load them one by one as required
+  '!js/bower_components/**/*.js',
+  'js/bower_components/lodash.js',
+  'js/bower_components/dist/jquery.js',
+  'js/bower_components/backbone.js',
+
   'js/dependencies/**/*.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
-  'js/**/*.js',
+  'js/**/*.js'
 
   // Use the "exclude" operator to ignore files
   // '!js/ignore/these/files/*.js'

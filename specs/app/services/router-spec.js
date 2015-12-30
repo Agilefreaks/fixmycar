@@ -19,10 +19,11 @@ describe('Router', function () {
   });
 
   describe('navigate', function () {
-    var route;
+    var route, renderPageSpy;
 
     beforeEach(function () {
       route = undefined;
+      renderPageSpy = spyOn(viewService, 'renderPage').and.callThrough();
 
       Backbone.history.start();
 
@@ -49,8 +50,6 @@ describe('Router', function () {
       });
 
       it('renders home', function (complete) {
-        var renderPageSpy = spyOn(viewService, 'renderPage').and.callThrough();
-
         subject()
           .fail(helpers.expectNeverCalled)
           .done(function () {
@@ -65,15 +64,40 @@ describe('Router', function () {
         route = '#/dtcs';
       });
 
-      it('renders dtcs page', function (complete) {
-        var renderPageSpy = spyOn(viewService, 'renderPage').and.callThrough();
+      describe('server returns dtcs', function () {
+        var server, dtcs;
 
-        subject()
-          .fail(helpers.expectNeverCalled)
-          .done(function () {
-            expect(renderPageSpy).toHaveBeenCalledWith(DtcsPage, jasmine.any(Object));
-          })
-          .always(complete);
+        beforeEach(function () {
+          server = sinon.fakeServer.create();
+
+          dtcs = [{
+            code: 'P1011',
+            vehicle: {
+              VIN: "VN123",
+              name: "BMW",
+              createdAt: "2015-12-28T20:29:04.000Z",
+              updatedAt: "2015-12-28T20:29:04.000Z",
+              owner: 1
+            }
+          }];
+
+          server.autoRespond = true;
+          server.respondImmediately = true;
+          server.respondWith('GET', '/dtcs', [HttpStatusCodes.Ok, {ContentType: ContentTypes.Json}, JSON.stringify(dtcs)]);
+        });
+
+        afterEach(function () {
+          server.restore();
+        });
+
+        it('renders dtcs page', function (complete) {
+          subject()
+            .fail(helpers.expectNeverCalled)
+            .done(function () {
+              expect(renderPageSpy).toHaveBeenCalledWith(DtcsPage, jasmine.objectContaining({collection: jasmine.any(DtcCollection)}));
+            })
+            .always(complete);
+        });
       });
     });
   });

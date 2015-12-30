@@ -9,9 +9,13 @@ Router = Backbone.Router.extend({
   },
 
   dtcs: function () {
-    return this._viewService.renderPage(DtcsPage, {
-      collection: new DtcCollection()
-    });
+    var self = this;
+    var dtcs = new DtcCollection();
+
+    return dtcs.fetch()
+      .then(function () {
+        return self._viewService.renderPage(DtcsPage, {collection: dtcs});
+      });
   },
 
   home: function () {

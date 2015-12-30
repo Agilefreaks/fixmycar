@@ -1,0 +1,3 @@
+ContentTypes = {
+  Json: 'application/json'
+};

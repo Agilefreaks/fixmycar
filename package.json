@@ -5,6 +5,7 @@
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "bower": "^1.7.1",
     "db-migrate": "^0.9.23",
     "ejs": "~0.8.4",
     "grunt": "0.4.2",
@@ -29,7 +30,7 @@
   },
   "scripts": {
     "debug": "node debug app.js",
-    "postinstall": "bower install",
+    "postinstall": "./node_modules/bower/bin/bower install",
     "start": "node app.js"
   },
   "main": "app.js",

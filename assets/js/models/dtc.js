@@ -1,0 +1,2 @@
+Dtc = Model.extend({
+});

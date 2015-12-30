@@ -1,0 +1,2 @@
+Collection = Backbone.Collection.extend({
+});

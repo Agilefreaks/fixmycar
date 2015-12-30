@@ -39,6 +39,8 @@ var jsFilesToInject = [
   // will be injected here in no particular order.
   'js/utils/*.js',
   'js/services/*.js',
+  'js/models/*.js',
+  'js/collections/*.js',
   'js/views/*.js',
   'js/app.js'
 

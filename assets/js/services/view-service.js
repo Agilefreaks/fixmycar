@@ -20,7 +20,7 @@ ViewService = ExtensibleType.extend({
   },
 
   getTemplate: function (templateName) {
-    return JST['.tmp/public/templates/' + templateName + '.html'];
+    return JST['.tmp/public/templates/' + templateName + '.ejs'];
   },
 
   renderTemplate: function (templateName, options) {

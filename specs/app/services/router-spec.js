@@ -2,13 +2,7 @@ describe('Router', function () {
   var instance, viewService, subject;
 
   beforeEach(function () {
-    viewService = new ViewService($('<el></el>'));
-
-    window.App = {
-      serviceContainer: {
-        getService: jasmine.createSpy('getService').and.returnValue(viewService)
-      }
-    };
+    viewService = App.serviceContainer.getService('viewService');
 
     instance = new Router();
   });
@@ -83,7 +77,7 @@ describe('Router', function () {
 
           server.autoRespond = true;
           server.respondImmediately = true;
-          server.respondWith('GET', '/dtcs', [HttpStatusCodes.Ok, {ContentType: ContentTypes.Json}, JSON.stringify(dtcs)]);
+          server.respondWith('GET', '/v1/dtcs', [HttpStatusCodes.Ok, {ContentType: ContentTypes.Json}, JSON.stringify(dtcs)]);
         });
 
         afterEach(function () {

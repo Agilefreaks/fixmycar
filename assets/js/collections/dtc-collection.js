@@ -2,6 +2,6 @@ DtcCollection = Collection.extend({
   model: Dtc,
 
   url: function () {
-    return '/dtcs';
+    return '/v1/dtcs';
   }
 });

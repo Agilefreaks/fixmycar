@@ -36,7 +36,7 @@ module.exports = function (config) {
       'bower_components/lodash/lodash.js',
       'bower_components/jquery/dist/jquery.js',
       'bower_components/backbone/backbone.js',
-      
+
       'node_modules/sinon/pkg/sinon.js',
 
       'assets/js/utils/*.js',
@@ -46,6 +46,7 @@ module.exports = function (config) {
       'assets/js/views/*.js',
 
       'specs/app/helpers/*.js',
+      'specs/app/spec-helper.js',
       'specs/app/**/*-spec.js'
     ]
   });

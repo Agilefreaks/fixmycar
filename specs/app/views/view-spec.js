@@ -3,13 +3,7 @@ describe('View', function () {
 
   beforeEach(function () {
     options = {};
-    viewService = new ViewService($('<el></el>'));
-
-    window.App = {
-      serviceContainer: {
-        getService: jasmine.createSpy('getService').and.returnValue(viewService)
-      }
-    };
+    viewService = App.serviceContainer.getService('viewService');
 
     instance = new View();
   });

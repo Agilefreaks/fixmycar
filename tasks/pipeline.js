@@ -32,6 +32,7 @@ var jsFilesToInject = [
   'js/bower_components/lodash.js',
   'js/bower_components/dist/jquery.js',
   'js/bower_components/backbone.js',
+  'js/bower_components/backbone.stickit/backbone.stickit.js',
 
   'js/dependencies/**/*.js',
 

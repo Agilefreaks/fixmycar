@@ -6,7 +6,7 @@ window.App = {
     this.serviceContainer.registerService('viewService', new ViewService($mainContent));
     this.serviceContainer.registerService('router', new Router());
 
-    Backbone.history.start({pushState: true});
+    Backbone.history.start();
   }
 };
 

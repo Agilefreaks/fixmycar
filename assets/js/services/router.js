@@ -1,7 +1,7 @@
 Router = Backbone.Router.extend({
   routes: {
     'dtcs': 'dtcs',
-    '': 'home'
+    '*anything': 'home'
   },
 
   initialize: function () {
@@ -9,7 +9,9 @@ Router = Backbone.Router.extend({
   },
 
   dtcs: function () {
-
+    return this._viewService.renderPage(DtcsPage, {
+      collection: new DtcCollection()
+    });
   },
 
   home: function () {

@@ -1,9 +1,10 @@
 module.exports = function (config) {
   config.set({
-    basePath: './',
+    basePath: '../',
 
     plugins: [
       'karma-jasmine',
+      'karma-ejs-preprocessor',
       'karma-chrome-launcher'
     ],
 
@@ -21,16 +22,29 @@ module.exports = function (config) {
 
     browsers: ['Chrome'],
 
-    files: [
-      '../bower_components/lodash/lodash.js',
-      '../bower_components/jquery/dist/jquery.js',
-      '../bower_components/backbone/backbone.js',
+    preprocessors: {
+      '**/*.ejs': ['ejs']
+    },
 
-      '../assets/js/utils/*.js',
-      '../assets/js/services/*.js',
-      '../assets/js/views/*.js',
-      'app/helpers/*.js',
-      'app/**/*-spec.js'
+    ejsOptions: {
+      parentPath: 'assets/templates'
+    },
+
+    files: [
+      'assets/templates/**/*.ejs',
+
+      'bower_components/lodash/lodash.js',
+      'bower_components/jquery/dist/jquery.js',
+      'bower_components/backbone/backbone.js',
+
+      'assets/js/utils/*.js',
+      'assets/js/services/*.js',
+      'assets/js/models/*.js',
+      'assets/js/collections/*.js',
+      'assets/js/views/*.js',
+
+      'specs/app/helpers/*.js',
+      'specs/app/**/*-spec.js'
     ]
   });
 };

@@ -1,4 +1,4 @@
-fdescribe('Router', function () {
+describe('Router', function () {
   var instance, viewService, subject;
 
   beforeEach(function () {
@@ -27,8 +27,15 @@ fdescribe('Router', function () {
       Backbone.history.start();
 
       subject = function () {
-        instance = new Router();
+        var deferred = new $.Deferred();
+
+        instance.once('route', function () {
+          deferred.resolve();
+        });
+
         instance.navigate(route, {trigger: true});
+
+        return deferred.promise();
       };
     });
 
@@ -38,7 +45,7 @@ fdescribe('Router', function () {
 
     describe('route is /', function () {
       beforeEach(function () {
-        route = '/';
+        route = '#/';
       });
 
       it('renders home', function (complete) {
@@ -48,6 +55,23 @@ fdescribe('Router', function () {
           .fail(helpers.expectNeverCalled)
           .done(function () {
             expect(renderPageSpy).toHaveBeenCalledWith(HomePage);
+          })
+          .always(complete);
+      });
+    });
+
+    describe('route is /dtcs', function () {
+      beforeEach(function () {
+        route = '#/dtcs';
+      });
+
+      it('renders dtcs page', function (complete) {
+        var renderPageSpy = spyOn(viewService, 'renderPage').and.callThrough();
+
+        subject()
+          .fail(helpers.expectNeverCalled)
+          .done(function () {
+            expect(renderPageSpy).toHaveBeenCalledWith(DtcsPage, jasmine.any(Object));
           })
           .always(complete);
       });

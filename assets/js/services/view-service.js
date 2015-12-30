@@ -20,11 +20,11 @@ ViewService = ExtensibleType.extend({
   },
 
   getTemplate: function (templateName) {
-    return JST['.tmp/public/templates/' + templateName + '.ejs'];
-  },
+    return JST[templateName];
+    },
 
-  renderTemplate: function (templateName, options) {
-    if (!this.templateExists(templateName)) {
+    renderTemplate: function (templateName, options) {
+      if (!this.templateExists(templateName)) {
       throw new Error('Cannot find template ' + templateName);
     }
 
